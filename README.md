@@ -25,10 +25,10 @@
 
 ## Ссылки
 
-`Домен для обращения к API` — ссылка
+`Домен для обращения к API` — api.movies-explorer.nata.nomoredomains.icu
 
 `Репозиторий с React-приложением` — https://github.com/nata-naumova/movies-explorer-api
 
 `Ссылка на макет` — https://www.figma.com/file/MlNkBvZeuKR0SYnBATyrwt/Diploma-(Copy)?node-id=891%3A3857
 
-`123.123.123.123` — публичный IP адресс
+`51.250.16.97` — публичный IP адрес
