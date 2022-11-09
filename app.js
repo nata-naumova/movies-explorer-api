@@ -16,12 +16,12 @@ const app = express();
 
 // МИДЛВАРЫ
 app.use(bodyParser.json());
+app.use(requestLogger);
 app.use(cors);
 app.use(limiter); // подключаем rate-limiter
 app.use(helmet());
 // Подключаем роуты
 app.use(express.json());
-app.use(requestLogger);
 
 app.get('/crash-test', () => {
   setTimeout(() => {
@@ -36,10 +36,7 @@ app.use(errors());
 app.use(mainErrors);
 
 mongoose.connect(NODE_ENV === 'production' ? DATABASE_URL : devDatabaseUrl);
-app.listen(PORT, () => {
-  // eslint-disable-next-line no-console
-  console.log(`App listening on port ${PORT}`);
-});
+app.listen(PORT);
 
 /* = = =
   В файле .env записаны следующие данные:

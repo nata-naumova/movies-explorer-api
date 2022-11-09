@@ -31,16 +31,10 @@ module.exports.login = (req, res, next) => {
 
 // Получение пользователей
 module.exports.getUsers = (req, res, next) => {
-  User.find(req.user._id)
-    .then((user) => {
-      if (!user) {
-        throw new NotFoundError(userIdNotFoundText);
-      }
-      return res.send(user);
-    })
-    .catch((err) => {
-      next(err);
-    });
+  User.findById(req.user._id)
+    .orFail(() => next(new NotFoundError(userIdNotFoundText)))
+    .then((user) => res.send(user))
+    .catch((err) => next(err));
 };
 
 // Создание нового пользователя
@@ -69,10 +63,10 @@ module.exports.createUser = (req, res, next) => {
           }))
           .catch((err) => {
             if (err.name === 'ValidationError') {
-              next(new BadRequestError('Некорректные данные при создании пользователя'));
+              next(new BadRequestError(invalidDataErrorText));
             }
             if (err.code === 11000) {
-              next(new ConflictError('Такой пользователь уже существует'));
+              next(new ConflictError(duplicateEmailErrorText));
             }
             next(err);
           });

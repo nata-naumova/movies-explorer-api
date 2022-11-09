@@ -1,3 +1,5 @@
+const { urlFormatError } = require('../utils/constants');
+
 const putError = (err, req, res, next) => {
   if (err.statusCode) {
     return res
@@ -10,7 +12,7 @@ const putError = (err, req, res, next) => {
 
 const validateURL = (value) => {
   if (value !== value.match(/^https?:\/\/(www\.)?[a-zA-Z\d-]+\.[\w\d\-.~:/?#[\]@!$&'()*+,;=]{2,}#?$/).join('')) {
-    throw new Error('Неверный формат ссылки');
+    throw new Error(urlFormatError);
   }
   return value;
 };
