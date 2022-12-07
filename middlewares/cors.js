@@ -1,6 +1,8 @@
 const allowedCors = [
   'https://api.movies-explorer.nata.nomoredomains.icu',
   'http://api.movies-explorer.nata.nomoredomains.icu',
+  'https://movies-explorer.nata.nomoredomains.icu',
+  'http://movies-explorer.nata.nomoredomains.icu',
   'https://localhost:3000',
   'http://localhost:3000',
   'https://localhost:3001',
